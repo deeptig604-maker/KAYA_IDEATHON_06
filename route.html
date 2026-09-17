@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avshesh — Route Optimization</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="enhance.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="seed">🌾</span> <span data-i18n="brandName">Avshesh</span></a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="buyer.html" data-i18n="navDashboard">Dashboard</a>
+      <a href="route.html" data-i18n="navRoute">Route Optimization</a>
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button data-lang="en">EN</button>
+        <button data-lang="hi">हिं</button>
+      </div>
+      <div id="nav-user-slot"></div>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container page-enter">
+    <h1 data-i18n="routeTitle">Pickup Route</h1>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-icon">📏</div><div class="stat-value" id="stat-distance">0 km</div><div class="stat-label" data-i18n="routeTotalDistance">Total Distance</div></div>
+      <div class="stat-card"><div class="stat-icon">⏱️</div><div class="stat-value" id="stat-time">0 min</div><div class="stat-label" data-i18n="routeEstTime">Estimated Time</div></div>
+      <div class="stat-card"><div class="stat-icon">👨‍🌾</div><div class="stat-value" id="stat-farmer-count">0</div><div class="stat-label" data-i18n="routeFarmers">Farmers</div></div>
+      <div class="stat-card"><div class="stat-icon">🌾</div><div class="stat-value" id="stat-residue">0 kg</div><div class="stat-label" data-i18n="routeTotalResidue">Total Residue</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="two-col">
+    <div class="panel">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <h2 style="margin:0;" data-i18n="routeOrderTitle">Pickup order</h2>
+        <button class="btn btn-primary" id="optimize-btn" data-i18n="btnOptimizeRoute">Optimize Route</button>
+      </div>
+      <div class="route-map" style="margin-top:20px;">
+        <svg class="route-svg" id="route-svg" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div class="ai-note" data-i18n="aiNote">AI-inspired route optimization prototype — a nearest-neighbor heuristic, not a trained AI model.</div>
+    </div>
+
+    <div class="panel">
+      <h2 style="font-size:1.1rem;">🚚 <span id="fuel-title">Trip estimate</span></h2>
+      <div class="rows" style="display:flex; flex-direction:column; gap:14px; margin-top:14px;">
+        <div><span data-i18n="routeFuel">Estimated Fuel</span>: <b id="stat-fuel">0 L</b></div>
+        <div><span data-i18n="routeFuelCost">Estimated Fuel Cost</span>: <b id="stat-fuel-cost">₹0</b></div>
+      </div>
+      <ul class="route-list" id="route-list" style="margin-top:20px;"></ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="brand"><span class="seed">🌾</span> <span data-i18n="brandName">Avshesh</span></span>
+    <small data-i18n="footerTag">Reducing stubble burning, one pickup at a time.</small>
+  </div>
+</footer>
+
+<div id="toast-stack"></div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+<script src="chatbot.js"></script>
+<script src="onboarding.js"></script>
+<script src="data.js"></script>
+<script src="buyer.js"></script>
+<script src="route.js"></script>
+</body>
+</html>

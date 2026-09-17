@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avshesh — Buyer Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="enhance.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="seed">🌾</span> <span data-i18n="brandName">Avshesh</span></a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="buyer.html" data-i18n="navDashboard">Dashboard</a>
+      <a href="route.html" data-i18n="navRoute">Route Optimization</a>
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button data-lang="en">EN</button>
+        <button data-lang="hi">हिं</button>
+      </div>
+      <div id="nav-user-slot"></div>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container page-enter">
+    <h1 data-i18n="buyerHeaderTitle">Buyer Dashboard</h1>
+    <p class="subtitle" id="buyer-sub"></p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-icon">🌾</div><div class="stat-value" id="stat-available">0 kg</div><div class="stat-label" data-i18n="statAvailableResidue">Available Residue</div></div>
+      <div class="stat-card"><div class="stat-icon">👨‍🌾</div><div class="stat-value" id="stat-farmers">0</div><div class="stat-label" data-i18n="statNearbyFarmers">Nearby Farmers</div></div>
+      <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-value" id="stat-supply">₹0</div><div class="stat-label" data-i18n="statPotentialSupply">Potential Supply</div></div>
+      <div class="stat-card"><div class="stat-icon">📨</div><div class="stat-value" id="stat-requests">0</div><div class="stat-label" data-i18n="statActiveRequests">Active Requests</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="panel">
+    <h2 data-i18n="nearbyResidueTitle">Nearby Residue</h2>
+    <div class="filter-bar" style="margin-top:16px;">
+      <select id="filter-crop">
+        <option value="">All Crops</option>
+      </select>
+      <select id="filter-distance">
+        <option value="0">Any Distance</option>
+        <option value="5">Within 5 km</option>
+        <option value="10">Within 10 km</option>
+        <option value="20">Within 20 km</option>
+      </select>
+      <select id="filter-sort">
+        <option value="distance">Nearest first</option>
+        <option value="price">Lowest price first</option>
+        <option value="quantity">Largest quantity first</option>
+      </select>
+    </div>
+    <div class="card-list" id="farmer-list"></div>
+  </div>
+
+  <div class="panel" style="text-align:center;">
+    <p style="margin-bottom:14px;" data-i18n="planRouteCta">Plan a pickup route for requested farmers</p>
+    <a href="route.html" class="btn btn-primary" data-i18n="navRoute">Route Optimization</a>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="brand"><span class="seed">🌾</span> <span data-i18n="brandName">Avshesh</span></span>
+    <small data-i18n="footerTag">Reducing stubble burning, one pickup at a time.</small>
+  </div>
+</footer>
+
+<div id="toast-stack"></div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+<script src="chatbot.js"></script>
+<script src="onboarding.js"></script>
+<script src="data.js"></script>
+<script src="buyer.js"></script>
+</body>
+</html>
