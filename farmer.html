@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avshesh — Farmer Dashboard</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/enhance.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="seed">🌾</span> <span data-i18n="brandName">Avshesh</span></a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="farmer.html" data-i18n="navDashboard">Dashboard</a>
+      <a href="farmer.html#my-listings" data-i18n="navListings">My Listings</a>
+      <a href="listing.html" data-i18n="navMarketplace">Marketplace</a>
+      <a href="route.html" data-i18n="navRoute">Route Optimization</a>
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button data-lang="en">EN</button>
+        <button data-lang="hi">हिं</button>
+      </div>
+      <div id="nav-user-slot"></div>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container page-enter">
+    <h1><span id="greeting-text" data-i18n="farmerGreeting">Good morning</span><span id="greeting-name"></span> 👋</h1>
+    <p class="subtitle" data-i18n="farmerGreetingSub">Here's how your residue is doing today.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-icon">🌾</div><div class="stat-value" id="stat-listed">0 kg</div><div class="stat-label" data-i18n="statResidueListed">Residue Listed</div></div>
+      <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-value" id="stat-earnings">₹0</div><div class="stat-label" data-i18n="statEarnings">Potential Earnings</div></div>
+      <div class="stat-card"><div class="stat-icon">🤝</div><div class="stat-value" id="stat-interested">0</div><div class="stat-label" data-i18n="statInterested">Interested Buyers</div></div>
+      <div class="stat-card"><div class="stat-icon">🚚</div><div class="stat-value" id="stat-pickups">0</div><div class="stat-label" data-i18n="statPickups">Pickups Completed</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="two-col">
+    <div class="panel">
+      <h2 data-i18n="formTitle">List Your Crop Residue</h2>
+      <form id="listing-form" class="form-grid" style="margin-top:18px;">
+        <div class="field">
+          <label data-i18n="labelCropType">Crop Type</label>
+          <select id="f-crop" required>
+            <option value="Wheat">Wheat</option>
+            <option value="Rice">Rice</option>
+            <option value="Corn">Corn</option>
+            <option value="Sugarcane">Sugarcane</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label data-i18n="labelResidueType">Residue Type</label>
+          <select id="f-residue-type" required>
+            <option value="Wheat Straw">Wheat Straw</option>
+            <option value="Rice Straw">Rice Straw</option>
+            <option value="Corn Stalks">Corn Stalks</option>
+            <option value="Sugarcane Residue">Sugarcane Residue</option>
+            <option value="Cotton Residue">Cotton Residue</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label data-i18n="labelQuantity">Quantity (kg)</label>
+          <input type="number" id="f-quantity" min="1" value="1000" required />
+        </div>
+        <div class="field">
+          <label data-i18n="labelPrice">Expected Price per kg (₹)</label>
+          <input type="number" id="f-price" min="0.1" step="0.1" value="3.5" required />
+        </div>
+        <div class="field full">
+          <label data-i18n="labelLocation">Location</label>
+          <input type="text" id="f-location" value="Mathura, Uttar Pradesh" required />
+        </div>
+        <div class="field">
+          <label data-i18n="labelAvailableFrom">Available From</label>
+          <input type="date" id="f-date" required />
+        </div>
+        <div class="field" style="justify-content:flex-end;">
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="btnListResidue">List Residue</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel impact-block">
+      <h2 style="font-size:1.1rem;" data-i18n="impactYourTitle">Your Environmental Impact</h2>
+      <div class="rows">
+        <div><b id="impact-kg">0 kg</b><span>🌱 Residue diverted</span></div>
+        <div><b id="impact-co2">0 kg</b><span>🌍 CO₂ reduction</span></div>
+      </div>
+      <small>Estimated value for demonstration purposes.</small>
+    </div>
+  </div>
+
+  <div class="panel" id="my-listings">
+    <h2 data-i18n="myListingsTitle">My Listings</h2>
+    <div class="card-list" id="listings-container" style="margin-top:16px;"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="brand"><span class="seed">🌾</span> <span data-i18n="brandName">Avshesh</span></span>
+    <small data-i18n="footerTag">Reducing stubble burning, one pickup at a time.</small>
+  </div>
+</footer>
+
+<div id="toast-stack"></div>
+
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/data.js"></script>
+<script src="js/farmer.js"></script>
+</body>
+</html>
